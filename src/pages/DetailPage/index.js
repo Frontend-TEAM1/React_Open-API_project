@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Octokit } from 'octokit'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import CommentBoard from './components/CommentBoard'
 import CommentInput from './components/CommentInput'
@@ -7,39 +7,15 @@ import IssueDetail from './components/IssueDetail'
 
 const DetailPage = () => {
 	const { id } = useParams()
+	console.log('number', number)
 	const [result, setResult] = useState()
-
-	const getIssue = async () => {
-		const octokit = new Octokit({
-			auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
-		})
-
-		const result = await octokit.request(
-			`GET /repos/angular/angular-cli/issues/${id}`,
-			{
-				owner: 'OWNER',
-				repo: 'REPO',
-				issue_number: id,
-				headers: {
-					// 깃허브에 담아보내는거
-				},
-			},
-		)
-		setResult(result.data)
-		console.log('detailpage result', result) //왜 안읽혀?
-	}
-
-	useEffect(() => {
-		getIssue()
-	}, [id])
-
-	console.log('넘기기전', result)
+	const state = useSelector(state => state.issues.details)
 
 	return (
 		<div>
-			디테일페이지{id}
+			디테일페이지{number}
 			{/* {JSON.stringify(result)} */}
-			{result && <IssueDetail result={result} />}
+			{state && <IssueDetail number={number} />}
 			<CommentBoard />
 			<CommentInput />
 		</div>

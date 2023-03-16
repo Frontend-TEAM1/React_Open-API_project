@@ -1,20 +1,26 @@
 // 이슈 타이틀 + 디테일
 
+import { useDispatch, useSelector } from 'react-redux'
+import { getDetails } from 'store/issue'
 import styled from 'styled-components'
 
-function IssueDetail({ result }) {
-	console.log(result)
+function IssueDetail({ number }) {
+	// const idx = state.findIndex(item => item.number == num)
+	const dispatch = useDispatch()
+	dispatch(getDetails(number))
+	const state = useSelector(state => state.issues.details)
+	console.log('여기', state)
 	return (
 		<S.Wrapper>
-			<S.Title>{result.title}</S.Title>
+			<S.Title>{state.title}</S.Title>
 			<br />
 			<S.Info>
-				<span>{result.state}</span>
-				<span>{result.created_at}</span>
-				<span>{result.login}</span>
+				<span>{state.state}</span>
+				<span>{state.created_at}</span>
+				<span>{state.user.login}</span>
 			</S.Info>
 			<br />
-			<S.Content>{result.body}</S.Content>
+			<S.Content>{state.body}</S.Content>
 		</S.Wrapper>
 	)
 }

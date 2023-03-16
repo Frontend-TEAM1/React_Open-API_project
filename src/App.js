@@ -1,12 +1,15 @@
-import Routing from 'routes/Routing'
-import GlobalStyles from 'styles/global'
+import { RouterProvider } from 'react-router-dom'
+import GlobalStyles from './styles/global'
+import { Provider } from 'react-redux'
+import { store } from 'store/@store'
+import router from 'routes/Routing'
 
 function App() {
 	return (
-		<div>
-			<Routing />
+		<Provider store={store}>
 			<GlobalStyles />
-		</div>
+			<RouterProvider router={router} />
+		</Provider>
 	)
 }
 

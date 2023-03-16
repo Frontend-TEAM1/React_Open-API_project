@@ -1,44 +1,48 @@
-import { Octokit } from 'octokit'
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { getIssues } from 'store/issue'
 import styled from 'styled-components'
 import ContentFiltering from './components/Filtering/ContentFilteringOpt'
 import ContentListFiltering from './components/Filtering/ContentListFilteringOpt'
 import IssueContent from './components/IssueContent'
 
 function HomePage() {
-	const [result, setResult] = useState([])
 	const [page, setPage] = useState(1)
 	const page1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 	const page2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
+	const state = useSelector(state => state.issues.issues)
+	// const getIssues = async () => {
+	// 	const octokit = new Octokit({
+	// 		auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN, //.env처리함
+	// 	})
 
-	const getIssues = async () => {
-		const octokit = new Octokit({
-			auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN, //.env처리함
-		})
+	// 	const result = await octokit.request(
+	// 		'GET /repos/angular/angular-cli/issues',
+	// 		{
+	// 			owner: 'OWNER',
+	// 			repo: 'REPO',
+	// 			headers: {
+	// 				// 깃허브에 담아보내는거
+	// 			},
+	// 			per_page: 10,
+	// 			page: page, // 페이지네이션
 
-		const result = await octokit.request(
-			'GET /repos/angular/angular-cli/issues',
-			{
-				owner: 'OWNER',
-				repo: 'REPO',
-				headers: {
-					// 깃허브에 담아보내는거
-				},
-				per_page: 10,
-				page: page, // 페이지네이션
-				
-			},
-		)
-		setResult(result.data)
-		console.log('====>', result)
-	}
+	// 		},
+	// 	)
+	// 	setResult(result.data)
+	// 	console.log('====>', result)
+	// }
 	useEffect(() => {
-		getIssues()
-	}, [page])
+		// console.log('dispatch', dispatch(getIssues()))
+		dispatch(getIssues())
+	}, [])
 
-	console.log(result)
+	// setResult(dispatch(getIssues()))
+
+	console.log('state==>', state)
 
 	const nextPage = () => {
 		if (page > 19) return
@@ -66,14 +70,14 @@ function HomePage() {
 				<ContentFiltering />
 				<ContentListFiltering />
 			</S.Filters>
-			{result.map(v => {
+			{state.map(item => {
 				return (
 					<div
 						onClick={() => {
-							navigate(`/issue/${v.number}`)
+							navigate(`/issue/${item.id}`)
 						}}
 					>
-						<IssueContent issue={v} />
+						<IssueContent issue={item} />
 					</div>
 				)
 			})}
