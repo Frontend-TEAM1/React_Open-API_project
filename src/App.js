@@ -1,8 +1,8 @@
-import { RouterProvider } from 'react-router-dom'
-import GlobalStyles from './styles/global'
-import { Provider } from 'react-redux'
-import { store } from 'store/@store'
-import router from 'routes/Routing'
+import { RouterProvider } from 'react-router-dom';
+import GlobalStyles from './styles/global';
+import { Provider } from 'react-redux';
+import { store } from 'store/@store';
+import router from 'routes/Routing';
 
 function App() {
 	return (
@@ -10,7 +10,7 @@ function App() {
 			<GlobalStyles />
 			<RouterProvider router={router} />
 		</Provider>
-	)
+	);
 }
 
-export default App
+export default App;

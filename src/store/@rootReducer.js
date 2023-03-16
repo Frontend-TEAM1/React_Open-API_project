@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
-import { issueSlice } from './issue'
+import { combineReducers } from 'redux';
+import { issueSlice } from './issue';
 
-export const rootReducer = combineReducers({ issues: issueSlice.reducer })
+export const rootReducer = combineReducers({ issues: issueSlice.reducer });

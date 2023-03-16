@@ -1,7 +1,7 @@
-import { createBrowserRouter } from 'react-router-dom'
-import DetailPage from 'pages/DetailPage'
-import Layout from '../components/Layout/Layout'
-import HomePage from '../pages/HomePage'
+import { createBrowserRouter } from 'react-router-dom';
+import DetailPage from 'pages/DetailPage';
+import Layout from '../components/Layout/Layout';
+import HomePage from '../pages/HomePage';
 
 const router = createBrowserRouter([
 	{
@@ -15,6 +15,6 @@ const router = createBrowserRouter([
 			},
 		],
 	},
-])
+]);
 
-export default router
+export default router;

@@ -1,10 +1,10 @@
-import { keyframes } from 'styled-components'
+import { keyframes } from 'styled-components';
 
 export const spin = keyframes`
     to{
         transform: rotate(360deg);
     }
-`
+`;
 
 export const fadein = keyframes`
     from {
@@ -14,4 +14,4 @@ export const fadein = keyframes`
         opacity: 1;
         transform: translateY(-30px);
     }
-`
+`;

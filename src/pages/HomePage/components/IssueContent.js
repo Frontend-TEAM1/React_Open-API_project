@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { flexCenter } from '../../../styles/common'
+import styled from 'styled-components';
+import { flexCenter } from '../../../styles/common';
 
 function IssueContent({ issue }) {
 	return (
@@ -11,7 +11,8 @@ function IssueContent({ issue }) {
 				<S.FirstLine>
 					<span>#{issue.number}</span>
 					<span>{issue.user.login}</span>
-					<span>{issue.created_at}</span>
+					<span>작성일자 : {issue.created_at}</span>
+					<span>업데이트일자 : {issue.updated_at}</span>
 				</S.FirstLine>
 				<S.Body>{issue.body}</S.Body>
 				<S.LastLine>
@@ -19,14 +20,14 @@ function IssueContent({ issue }) {
 				</S.LastLine>
 			</S.Container>
 		</S.Wrapper>
-	)
+	);
 }
-export default IssueContent
+export default IssueContent;
 
 const Wrapper = styled.div`
 	width: 90%;
 	margin: 0 auto;
-`
+`;
 
 const Container = styled.div`
 	min-height: 10vh;
@@ -37,14 +38,14 @@ const Container = styled.div`
 	flex-direction: column;
 	${flexCenter}
 	box-shadow: 0 5px 18px -10px rgba(0, 0, 0, 0.7);
-`
+`;
 
 const Title = styled.div`
 	width: 100%;
 	margin-bottom: 10px;
 	font-weight: bolder;
 	font-size: large;
-`
+`;
 
 const FirstLine = styled.div`
 	width: 100%;
@@ -52,7 +53,7 @@ const FirstLine = styled.div`
 	margin-bottom: 20px;
 	color: gray;
 	justify-content: space-between;
-`
+`;
 const Body = styled.div`
 	width: 100%;
 	line-height: 30px;
@@ -64,7 +65,7 @@ const Body = styled.div`
 	@media (max-width: 600px) {
 		-webkit-line-clamp: 2;
 	}
-`
+`;
 
 const LastLine = styled.div`
 	width: 100%;
@@ -74,7 +75,7 @@ const LastLine = styled.div`
 	& > div {
 		padding-left: 1vw;
 	}
-`
+`;
 
 const S = {
 	Wrapper,
@@ -83,4 +84,4 @@ const S = {
 	FirstLine,
 	Body,
 	LastLine,
-}
+};
