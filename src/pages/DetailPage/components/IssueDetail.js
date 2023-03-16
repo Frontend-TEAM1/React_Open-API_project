@@ -6,15 +6,15 @@ function IssueDetail({ result }) {
 	console.log(result)
 	return (
 		<S.Wrapper>
-			<S.Title>{result.title}</S.Title>
+			<S.Title>result.title</S.Title>
 			<br />
 			<S.Info>
-				<span>{result.state}</span>
-				<span>{result.created_at}</span>
-				<span>{result.login}</span>
+				<span>result.state</span>
+				<span>result.created_at</span>
+				<span>result.login</span>
 			</S.Info>
 			<br />
-			<S.Content>{result.body}</S.Content>
+			<S.Content>result.body</S.Content>
 		</S.Wrapper>
 	)
 }

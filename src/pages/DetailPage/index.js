@@ -39,7 +39,7 @@ const DetailPage = () => {
 		<div>
 			디테일페이지{id}
 			{/* {JSON.stringify(result)} */}
-			{result && <IssueDetail result={result} />}
+			<IssueDetail />
 			<CommentBoard />
 			<CommentInput />
 		</div>

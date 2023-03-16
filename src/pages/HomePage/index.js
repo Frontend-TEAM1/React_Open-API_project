@@ -1,6 +1,6 @@
 import { Octokit } from 'octokit'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import ContentFiltering from './components/Filtering/ContentFilteringOpt'
 import ContentListFiltering from './components/Filtering/ContentListFilteringOpt'
@@ -12,10 +12,11 @@ function HomePage() {
 	const page1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 	const page2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 	const navigate = useNavigate()
+	const location = useLocation()
 
 	const getIssues = async () => {
 		const octokit = new Octokit({
-			auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN, //.env처리함
+			auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN, //숨겨야하는지?
 		})
 
 		const result = await octokit.request(
@@ -28,17 +29,22 @@ function HomePage() {
 				},
 				per_page: 10,
 				page: page, // 페이지네이션
-				
 			},
 		)
 		setResult(result.data)
-		console.log('====>', result)
+		//console.log('====>', result)
 	}
+	const state = page
+	const title = ''
+	const url = `?page`
 	useEffect(() => {
 		getIssues()
+		console.log(location)
+		history.pushState(state, title, url)
+		console.log(history)
 	}, [page])
 
-	console.log(result)
+	//console.log(result)
 
 	const nextPage = () => {
 		if (page > 19) return
