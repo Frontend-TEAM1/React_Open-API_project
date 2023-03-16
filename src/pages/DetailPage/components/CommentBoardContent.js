@@ -1,30 +1,49 @@
 // 코멘트가 쌓이는 곳
-import { useSelector } from 'react-redux'
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 function CommentBoardContent({ issue }) {
-	const state = useSelector(state => state.issues.issues)
-	// const idx = state.findIndex(item => item.id == id)
-	comments: 4
-	comments_url: 'https://api.github.com/repos/angular/angular-cli/issues/24836/comments'
-
 	return (
 		<>
-			{state.map(item => (
-				<S.Board issue={item} />
-			))}
+			<S.Board>
+				<S.Info>
+					<span>{issue.user.login}</span>
+					<span>{issue.created_at}</span>
+				</S.Info>
+				<S.Content>
+					<span>{issue.body}</span>
+				</S.Content>
+			</S.Board>
+			{/* ))} */}
 		</>
-	)
+	);
 }
 
-export default CommentBoardContent
+export default CommentBoardContent;
 
 const Board = styled.div`
 	width: 100%;
-	border: 1px solid red;
-	margin: 0 auto;
-`
+	border: 1px dashed lightgray;
+	border-radius: 50px;
+	padding: 30px;
+	margin-bottom: 20px;
+`;
 
+const Info = styled.div`
+	display: flex;
+	justify-content: space-between;
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 15px;
+`;
+
+const Content = styled.div`
+	display: flex;
+	justify-content: space-between;
+	font-size: 15px;
+	line-height: 30px;
+`;
 const S = {
 	Board,
-}
+	Info,
+	Content,
+};

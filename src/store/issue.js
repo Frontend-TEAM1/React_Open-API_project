@@ -80,6 +80,7 @@ export const getIssues = createAsyncThunk('issue/getIssues', async () => {
 })
 
 export const getDetails = createAsyncThunk('issue/getDetails', async number => {
+	console.log('reducer', number)
 	const res = await octokit.request(
 		`GET /repos/angular/angular-cli/issues/${number}`,
 		{

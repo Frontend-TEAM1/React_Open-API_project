@@ -74,7 +74,7 @@ function HomePage() {
 				return (
 					<div
 						onClick={() => {
-							navigate(`/issue/${item.id}`)
+							navigate(`/issue/${item.number}`)
 						}}
 					>
 						<IssueContent issue={item} />

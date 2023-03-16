@@ -1,29 +1,47 @@
 // 코멘트가 쌓이는 곳
-import { useSelector } from 'react-redux'
-import styled from 'styled-components'
-import CommentBoardContent from './CommentBoardContent'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getComments } from 'store/issue';
+import styled from 'styled-components';
+import CommentBoardContent from './CommentBoardContent';
 
-function CommentBoard() {
-	const state = useSelector(state => state.issues.issues)
-	// const idx = state.findIndex(item => item.id == id)
+function CommentBoard({ number }) {
+	const dispatch = useDispatch();
+	const state = useSelector(state => state.issues.comments);
+
+	useEffect(() => {
+		dispatch(getComments(number));
+	}, []);
+
 	return (
 		<S.Wrapper>
-			{state.map(item => (
-				<CommentBoardContent issue={item} />
-			))}
+			{state.length > 0 ? (
+				state.map(item => <CommentBoardContent issue={item} />)
+			) : (
+				<S.Board>댓글이 없습니다.</S.Board>
+			)}
 		</S.Wrapper>
-	)
+	);
 }
 
-export default CommentBoard
+export default CommentBoard;
 
 const Wrapper = styled.div`
 	width: 80%;
 	padding: 50px;
-	border: 1px dotted purple;
 	margin: 0 auto;
-`
+	/* box-shadow: 0 0 17px -10px rgba(0, 0, 0, 0.7); */
+`;
+
+const Board = styled.div`
+	width: 100%;
+	border: 1px dashed lightgray;
+	border-radius: 50px;
+	padding: 20px;
+	margin-bottom: 20px;
+`;
 
 const S = {
 	Wrapper,
-}
+	Board,
+};
