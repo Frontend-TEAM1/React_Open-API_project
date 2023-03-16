@@ -16,7 +16,7 @@ function HomePage() {
 
 	const getIssues = async () => {
 		const octokit = new Octokit({
-			auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN, //숨겨야하는지?
+			auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
 		})
 
 		const result = await octokit.request(
@@ -34,15 +34,30 @@ function HomePage() {
 		setResult(result.data)
 		//console.log('====>', result)
 	}
-	const state = page
-	const title = ''
-	const url = `?page`
+
+	//const state = page
+	//const title = ''
+	//const url = `?page=${page}`
+
 	useEffect(() => {
-		getIssues()
-		console.log(location)
+		const state = { page }
+		const title = ''
+		const url = `?page=${page}`
+
 		history.pushState(state, title, url)
+
 		console.log(history)
-	}, [page])
+
+		window.onpopstate = event => {
+			if (event.state && event.state.page !== undefined) {
+				// 이전 페이지 번호가 존재하는 경우에만 업데이트
+				console.log('눌림', event.state.page)
+				setPage(event.state.page)
+			}
+		}
+
+		getIssues()
+	}, [page, history])
 
 	//console.log(result)
 
