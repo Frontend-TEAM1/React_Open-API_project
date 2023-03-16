@@ -1,6 +1,7 @@
 import { Octokit } from 'octokit'
 import { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import ContentFiltering from './components/Filtering/ContentFilteringOpt'
 import ContentListFiltering from './components/Filtering/ContentListFilteringOpt'
@@ -12,7 +13,8 @@ function HomePage() {
 	const page1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 	const page2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 	const navigate = useNavigate()
-	const location = useLocation()
+	const issues = useSelector(state => state)
+	console.log(issues)
 
 	const getIssues = async () => {
 		const octokit = new Octokit({
