@@ -11,7 +11,7 @@ module.exports = {
 		ecmaVersion: 2020,
 		sourceType: 'module',
 	},
-	plugins: ['react', 'unused-imports'],
+	// plugins: ['react', 'unused-imports'],
 	rules: {
 		'react/jsx-uses-vars': 'error',
 		'react/jsx-uses-react': 'error',
