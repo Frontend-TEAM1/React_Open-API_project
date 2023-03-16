@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-function ContentListFiltering() {
+function ContentListFiltering({ setFilterListOption }) {
 	return (
 		<S.Wrapper>
-			<select>
-				<option>10개씩</option>
-				<option>20개씩</option>
-				<option>50개씩</option>
+			<select onChange={e => setFilterListOption(e.target.value)}>
+				<option value={10}>10개씩</option>
+				<option value={20}>20개씩</option>
+				<option value={50}>50개씩</option>
 			</select>
 		</S.Wrapper>
 	);

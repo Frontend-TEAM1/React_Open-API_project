@@ -1,6 +1,15 @@
+import { useSelector } from 'react-redux';
+
+const { useState } = require('react');
+
 // 작업중...!!
-function HomePage() {
-	const [page, setPage] = useState(1);
+function Pagination({ filterListOption }) {
+	const state = useSelector(state => state.issues.issues);
+
+	const [amount, setAmount] = useState(filterListOption); // 페이지당 게시물 수
+	const [page, setPage] = useState(1); // 페이지 인덱스(현재 페이지 번호)
+	const [total, setTotal] = useState(1); // 총 게시물 수
+	const offset = (page - 1) * amount;
 	const page1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	const page2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
@@ -29,7 +38,7 @@ function HomePage() {
 			<button onClick={firstPage}>맨처음</button>
 			<button onClick={prevPage}>이전</button>
 			<div>
-				{pagnation.map(p => {
+				{state.slice(offset, offset + amount).map(p => {
 					return (
 						<button
 							onClick={() => {
@@ -47,3 +56,5 @@ function HomePage() {
 		</div>
 	);
 }
+
+export default Pagination;

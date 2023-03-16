@@ -6,13 +6,9 @@ import styled from 'styled-components';
 import ContentFiltering from './components/Filtering/ContentFilteringOpt';
 import ContentListFiltering from './components/Filtering/ContentListFilteringOpt';
 import IssueContent from './components/IssueContent';
+import Pagination from './components/Pagination';
 
 function HomePage() {
-	// pagination
-	const [page, setPage] = useState(1);
-	const page1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-	const page2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-
 	// rendering
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -20,40 +16,21 @@ function HomePage() {
 
 	// filtering
 	const [filterOption, setFilterOption] = useState('created');
+	const [filterListOption, setFilterListOption] = useState(10);
 
 	useEffect(() => {
-		dispatch(getIssues(filterOption));
-	}, [filterOption]);
-
-	console.log('state==>', state);
-
-	const nextPage = () => {
-		if (page > 19) return;
-		setPage(page + 1);
-	};
-
-	const prevPage = () => {
-		if (page <= 1) return;
-		setPage(page - 1);
-	};
-
-	const pagnation = page <= 10 ? page1 : page2;
-
-	const firstPage = () => {
-		setPage(1);
-	};
-
-	const lastPage = () => {
-		setPage(20);
-	};
-
-	console.log('★★★★★', filterOption);
+		console.log('☆☆☆☆☆☆☆', filterListOption);
+		dispatch(getIssues(filterOption, filterListOption));
+	}, [filterOption, filterListOption]);
 
 	return (
 		<div>
 			<S.Filters>
-				<ContentFiltering setFilterOption={setFilterOption} />
-				<ContentListFiltering />
+				<ContentFiltering
+					filterOption={filterOption}
+					setFilterOption={setFilterOption}
+				/>
+				<ContentListFiltering setFilterListOption={setFilterListOption} />
 			</S.Filters>
 			{state.map(item => {
 				return (
@@ -67,24 +44,7 @@ function HomePage() {
 				);
 			})}
 			<S.Flex>
-				<button onClick={firstPage}>맨처음</button>
-				<button onClick={prevPage}>이전</button>
-				<div>
-					{pagnation.map(p => {
-						return (
-							<button
-								onClick={() => {
-									setPage(p);
-								}}
-								style={{ color: page === p ? 'red' : 'black' }}
-							>
-								{p}
-							</button>
-						);
-					})}
-				</div>
-				<button onClick={nextPage}>다음</button>
-				<button onClick={lastPage}>맨끝</button>
+				<Pagination filterListOption={filterListOption}></Pagination>
 			</S.Flex>
 		</div>
 	);
