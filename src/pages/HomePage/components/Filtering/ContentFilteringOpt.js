@@ -6,9 +6,7 @@ function ContentFiltering({ filterOption, setFilterOption }) {
 	return (
 		<S.Wrapper>
 			<select onChange={e => setFilterOption(e.target.value)}>
-				<option value={'created'} onClick={() => navigate(`/${filterOption}`)}>
-					생성순
-				</option>
+				<option value={'created'}>생성순</option>
 				<option value={'updated'}>업데이트순</option>
 				<option value={'comments'}>댓글순</option>
 			</select>

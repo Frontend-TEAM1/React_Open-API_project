@@ -5,11 +5,11 @@ import HomePage from '../pages/HomePage';
 
 const router = createBrowserRouter([
 	{
-		path: '/',
+		// path: '/',
 		element: <Layout />,
 		children: [
-			{ path: '', element: <HomePage /> },
-			{ path: '/:filterOption', element: <HomePage /> },
+			{ path: '/', element: <HomePage /> },
+			// { path: '/:filterOption', element: <HomePage /> },
 			{
 				path: '/issue/:number',
 				element: <DetailPage />,

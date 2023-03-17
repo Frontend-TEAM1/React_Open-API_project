@@ -13,7 +13,6 @@ function CommentBoardContent({ issue }) {
 					<span>{issue.body}</span>
 				</S.Content>
 			</S.Board>
-			{/* ))} */}
 		</>
 	);
 }
@@ -42,6 +41,7 @@ const Content = styled.div`
 	font-size: 15px;
 	line-height: 30px;
 `;
+
 const S = {
 	Board,
 	Info,

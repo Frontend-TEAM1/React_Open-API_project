@@ -13,38 +13,46 @@ function HomePage() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const state = useSelector(state => state.issues.issues);
+	const status = useSelector(state => state.issues.getAllIssues);
+	console.log('STATE================>', status);
 
 	// filtering
 	const [filterOption, setFilterOption] = useState('created');
-	const [filterListOption, setFilterListOption] = useState(10);
+	// const [filterListOption, setFilterListOption] = useState(10);
 
 	useEffect(() => {
-		console.log('☆☆☆☆☆☆☆', filterListOption);
-		dispatch(getIssues(filterOption, filterListOption));
-	}, [filterOption, filterListOption]);
+		// console.log('☆☆☆☆☆☆☆', filterListOption);
+		dispatch(getIssues(filterOption));
+	}, [filterOption]);
 
 	return (
 		<div>
+			{status.loading && (
+				<S.Loading>
+					<span>LOADING...</span>
+				</S.Loading>
+			)}
 			<S.Filters>
 				<ContentFiltering
 					filterOption={filterOption}
 					setFilterOption={setFilterOption}
 				/>
-				<ContentListFiltering setFilterListOption={setFilterListOption} />
+				<ContentListFiltering />
 			</S.Filters>
-			{state.map(item => {
-				return (
-					<div
-						onClick={() => {
-							navigate(`/issue/${item.number}`);
-						}}
-					>
-						<IssueContent issue={item} />
-					</div>
-				);
-			})}
+			{state &&
+				state.map(item => {
+					return (
+						<div
+							onClick={() => {
+								navigate(`/issue/${item.number}`);
+							}}
+						>
+							<IssueContent issue={item} />
+						</div>
+					);
+				})}
 			<S.Flex>
-				<Pagination filterListOption={filterListOption}></Pagination>
+				<Pagination></Pagination>
 			</S.Flex>
 		</div>
 	);
@@ -66,7 +74,25 @@ const Filters = styled.div`
 	margin: 5px 50px 5px 0;
 `;
 
+const Loading = styled.div`
+	width: 100vw;
+	height: 100vh;
+	opacity: 0.1;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	> span {
+		color: yellow;
+		font-size: 150px;
+		@media (max-width: 600px) {
+			font-size: 50px;
+		}
+	}
+`;
+
 const S = {
 	Flex,
 	Filters,
+	Loading,
 };
