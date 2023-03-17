@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import Filtering from 'components/Filter/ContentFilteringOpt';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getIssues } from 'store/issue';
+// import { getIssues } from 'store/issue';
 import styled from 'styled-components';
-import ContentFiltering from './components/Filtering/ContentFilteringOpt';
-import ContentListFiltering from './components/Filtering/ContentListFilteringOpt';
+// import ContentFiltering from './components/Filtering/ContentFilteringOpt';
+// import ContentListFiltering from './components/Filtering/ContentListFilteringOpt';
 import IssueContent from './components/IssueContent';
 import Pagination from './components/Pagination';
 
@@ -16,17 +17,17 @@ function HomePage() {
 	const status = useSelector(state => state.issues.getAllIssues);
 	console.log('STATE================>', status);
 
-	// filtering
-	const [filterOption, setFilterOption] = useState('created');
-	const [filterListOption, setFilterListOption] = useState(10);
+	// // filtering
+	// const [filterOption, setFilterOption] = useState('created');
+	// const [filterListOption, setFilterListOption] = useState(10);
 
-	useEffect(() => {
-		// console.log('☆☆☆☆☆☆☆', filterListOption);
-		dispatch(getIssues(filterOption));
-	}, [filterOption]);
+	// useEffect(() => {
+	// 	// console.log('☆☆☆☆☆☆☆', filterListOption);
+	// 	dispatch(getIssues());
+	// }, []);
 
 	// pagination
-	const [limit, setLimit] = useState(filterListOption); // 페이지당 게시물 수
+	const [limit, setLimit] = useState(1); // 페이지당 게시물 수
 	const [page, setPage] = useState(1); // 페이지 인덱스(현재 페이지 번호)
 	// const [total, setTotal] = useState(1); // 총 게시물 수
 	const offset = (page - 1) * limit;
@@ -40,15 +41,16 @@ function HomePage() {
 					<span>LOADING...</span>
 				</S.Loading>
 			)}
-			<S.Filters>
+			<Filtering></Filtering>
+			{/* <S.Filters>
 				<ContentFiltering
 					filterOption={filterOption}
 					setFilterOption={setFilterOption}
 				/>
 				<ContentListFiltering setLimit={setLimit} />
-			</S.Filters>
+			</S.Filters> */}
 			{state &&
-				state.slice(offset, offset + limit).map(item => {
+				state.map(item => {
 					return (
 						<div
 							onClick={() => {
@@ -61,7 +63,7 @@ function HomePage() {
 				})}
 			<S.Flex>
 				<Pagination
-					filterListOption={filterListOption}
+					// filterListOption={filterListOption}
 					limit={limit}
 					page={page}
 					setPage={setPage}

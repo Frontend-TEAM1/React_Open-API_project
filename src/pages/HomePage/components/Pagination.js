@@ -19,7 +19,7 @@ function Pagination({ filterListOption, limit, page, setPage }) {
 			{Array(numPages)
 				.fill()
 				.map((item, idx) => {
-					<Link key={idx + 1} to={`?page=${item}`}>
+					<Link key={idx + 1} to={`?page=${idx}`}>
 						{item}
 					</Link>;
 				})

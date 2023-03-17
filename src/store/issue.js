@@ -2,10 +2,14 @@
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Octokit } from 'octokit';
+// import { useLocation } from 'react-router-dom';
 
 const octokit = new Octokit({
 	auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
 });
+
+// const { search } = useLocation();
+// console.log('★★★★★★★★★★★★', search);
 
 const initialState = {
 	issues: [],
@@ -67,16 +71,19 @@ export const issueSlice = createSlice({
 	},
 });
 
-export const getIssues = createAsyncThunk('issue/getIssues', async sorting => {
+const sortingOption = new URLSearchParams(location.search).get('sort');
+const ListingOption = new URLSearchParams(location.search).get('per_page');
+
+export const getIssues = createAsyncThunk('issue/getIssues', async () => {
 	const res = await octokit.request('GET /repos/angular/angular-cli/issues', {
 		owner: 'angular',
 		repo: 'angular-cli',
 		state: 'open',
-		sort: `${sorting}`,
-		per_page: 10,
-		page: 20,
+		sort: sortingOption,
+		per_page: ListingOption,
+		page: 1,
 	});
-	console.log('★★★★★★★★★★★★', res.data);
+	console.log('★★★★★★★★★★★★', sortingOption, ListingOption);
 	return res.data;
 });
 
