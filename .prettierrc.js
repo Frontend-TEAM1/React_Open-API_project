@@ -1,6 +1,6 @@
 module.exports = {
 	endOfLine: 'lf',
-	semi: false,
+	semi: true,
 	singleQuote: true,
 	jsxSingleQuote: false,
 	tabWidth: 2,

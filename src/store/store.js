@@ -15,3 +15,5 @@ export const store = configureStore({
 	},
 })
 store.dispatch(getIssues())
+
+//getIssues에서 정의된 비즈니스 로직이 실행되어 GitHub API로부터 데이터를 검색하고, 데이터를 store에 저장

@@ -1,87 +1,46 @@
-import { Octokit } from 'octokit'
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
-import ContentFiltering from './components/Filtering/ContentFilteringOpt'
-import ContentListFiltering from './components/Filtering/ContentListFilteringOpt'
-import IssueContent from './components/IssueContent'
+import { Octokit } from 'octokit';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+// import { getIssues } from 'reducer/issueSlice';
+import styled from 'styled-components';
+import ContentFiltering from './components/Filtering/ContentFilteringOpt';
+import ContentListFiltering from './components/Filtering/ContentListFilteringOpt';
+import IssueContent from './components/IssueContent';
+import Pagination from './components/Pagination';
 
 function HomePage() {
-	const [result, setResult] = useState([])
-	const [page, setPage] = useState(1)
-	const page1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-	const page2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-	const navigate = useNavigate()
-	const issues = useSelector(state => state)
-	console.log(issues)
+	const [result, setResult] = useState([]);
+	let page = 1;
+	const page1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	const page2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+	const navigate = useNavigate();
+	const issues = useSelector(state => state.issues.issues);
+	console.log('홈 인덱스', issues);
 
 	const getIssues = async () => {
 		const octokit = new Octokit({
 			auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
-		})
+		});
 
 		const result = await octokit.request(
 			'GET /repos/angular/angular-cli/issues',
 			{
 				owner: 'OWNER',
 				repo: 'REPO',
-				headers: {
-					// 깃허브에 담아보내는거
-				},
+				headers: {},
 				per_page: 10,
-				page: page, // 페이지네이션
+				page: page,
 			},
-		)
-		setResult(result.data)
-		//console.log('====>', result)
-	}
-
-	//const state = page
-	//const title = ''
-	//const url = `?page=${page}`
+		);
+		setResult(result.data);
+	};
 
 	useEffect(() => {
-		const state = { page }
-		const title = ''
-		const url = `?page=${page}`
+		getIssues();
+	}, [page]);
 
-		history.pushState(state, title, url)
-
-		console.log(history)
-
-		window.onpopstate = event => {
-			if (event.state && event.state.page !== undefined) {
-				// 이전 페이지 번호가 존재하는 경우에만 업데이트
-				console.log('눌림', event.state.page)
-				setPage(event.state.page)
-			}
-		}
-
-		getIssues()
-	}, [page, history])
-
-	//console.log(result)
-
-	const nextPage = () => {
-		if (page > 19) return
-		setPage(page + 1)
-	}
-
-	const prevPage = () => {
-		if (page <= 1) return
-		setPage(page - 1)
-	}
-
-	const pagnation = page <= 10 ? page1 : page2
-
-	const firstPage = () => {
-		setPage(1)
-	}
-
-	const lastPage = () => {
-		setPage(20)
-	}
+	console.log('result', result);
 
 	return (
 		<div>
@@ -89,42 +48,25 @@ function HomePage() {
 				<ContentFiltering />
 				<ContentListFiltering />
 			</S.Filters>
-			{result.map(v => {
+			{issues.map(v => {
 				return (
 					<div
 						onClick={() => {
-							navigate(`/issue/${v.number}`)
+							navigate(`/issue/${v.number}`);
 						}}
 					>
 						<IssueContent issue={v} />
 					</div>
-				)
+				);
 			})}
 			<S.Flex>
-				<button onClick={firstPage}>맨처음</button>
-				<button onClick={prevPage}>이전</button>
-				<div>
-					{pagnation.map(p => {
-						return (
-							<button
-								onClick={() => {
-									setPage(p)
-								}}
-								style={{ color: page === p ? 'red' : 'black' }}
-							>
-								{p}
-							</button>
-						)
-					})}
-				</div>
-				<button onClick={nextPage}>다음</button>
-				<button onClick={lastPage}>맨끝</button>
+				<Pagination />
 			</S.Flex>
 		</div>
-	)
+	);
 }
 
-export default HomePage
+export default HomePage;
 
 const Flex = styled.div`
 	width: 50%;
@@ -132,15 +74,56 @@ const Flex = styled.div`
 	display: flex;
 	padding: 40px;
 	justify-content: space-between;
-`
+`;
 
 const Filters = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	margin: 5px 50px 5px 0;
-`
+`;
 
 const S = {
 	Flex,
 	Filters,
-}
+};
+
+/*
+useEffect(() => {
+		console.log('---------1---------');
+		const getIssues = async () => {
+			const octokit = new Octokit({
+				auth: process.env.REACT_APP_GITHUB_ACCESS_TOKEN,
+			});
+			console.log('---------2---------');
+			const result = await octokit.request(
+				'GET /repos/angular/angular-cli/issues',
+				{
+					owner: 'OWNER',
+					repo: 'REPO',
+					headers: {},
+					per_page: 10,
+					page: page,
+				},
+			);
+			console.log('---------3---------');
+
+			setResult(result.data);
+			console.log('---------4---------');
+		};
+		console.log('---------5---------');
+		pageRef.current = page;
+		console.log('---------6---------');
+		getIssues();
+		console.log('---------7---------');
+		const state = { page };
+		const title = '';
+		const url = `?page=${page}`;
+		console.log('---------8---------');
+		history.pushState(state, title, url);
+		console.log('---------9---------');
+
+		return history.replaceState(null, title, null);
+	}, [page]);
+	console.log('---------10---------');
+
+*/
