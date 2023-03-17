@@ -68,15 +68,15 @@ export const issueSlice = createSlice({
 });
 
 export const getIssues = createAsyncThunk('issue/getIssues', async sorting => {
-	console.log('★★★★★★★★★★★★', sorting);
 	const res = await octokit.request('GET /repos/angular/angular-cli/issues', {
 		owner: 'angular',
 		repo: 'angular-cli',
 		state: 'open',
 		sort: `${sorting}`,
 		per_page: 10,
-		page: 1,
+		page: 20,
 	});
+	console.log('★★★★★★★★★★★★', res.data);
 	return res.data;
 });
 

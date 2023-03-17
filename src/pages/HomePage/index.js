@@ -18,12 +18,20 @@ function HomePage() {
 
 	// filtering
 	const [filterOption, setFilterOption] = useState('created');
-	// const [filterListOption, setFilterListOption] = useState(10);
+	const [filterListOption, setFilterListOption] = useState(10);
 
 	useEffect(() => {
 		// console.log('☆☆☆☆☆☆☆', filterListOption);
 		dispatch(getIssues(filterOption));
 	}, [filterOption]);
+
+	// pagination
+	const [limit, setLimit] = useState(filterListOption); // 페이지당 게시물 수
+	const [page, setPage] = useState(1); // 페이지 인덱스(현재 페이지 번호)
+	// const [total, setTotal] = useState(1); // 총 게시물 수
+	const offset = (page - 1) * limit;
+	const currentPage = new URLSearchParams(location.search).get('page');
+	console.log('#index#', currentPage);
 
 	return (
 		<div>
@@ -37,10 +45,10 @@ function HomePage() {
 					filterOption={filterOption}
 					setFilterOption={setFilterOption}
 				/>
-				<ContentListFiltering />
+				<ContentListFiltering setLimit={setLimit} />
 			</S.Filters>
 			{state &&
-				state.map(item => {
+				state.slice(offset, offset + limit).map(item => {
 					return (
 						<div
 							onClick={() => {
@@ -52,7 +60,12 @@ function HomePage() {
 					);
 				})}
 			<S.Flex>
-				<Pagination></Pagination>
+				<Pagination
+					filterListOption={filterListOption}
+					limit={limit}
+					page={page}
+					setPage={setPage}
+				></Pagination>
 			</S.Flex>
 		</div>
 	);

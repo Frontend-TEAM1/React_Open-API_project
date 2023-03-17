@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-function ContentListFiltering({ setFilterListOption }) {
+function ContentListFiltering({ setFilterListOption, setLimit }) {
 	return (
 		<S.Wrapper>
-			<select onChange={e => setFilterListOption(e.target.value)}>
+			<select onChange={e => setLimit(e.target.value)}>
 				<option value={10}>10개씩</option>
 				<option value={20}>20개씩</option>
 				<option value={50}>50개씩</option>
