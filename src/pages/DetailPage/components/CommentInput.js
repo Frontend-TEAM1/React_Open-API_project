@@ -1,9 +1,9 @@
 // comment input창 있는곳. (실제 추가/수정/삭제 구현은 x)
 
-import { useState } from 'react'
+import { useState } from 'react';
 
 function CommentInput() {
-	const [inputValue, setInputValue] = useState()
+	const [inputValue, setInputValue] = useState();
 
 	return (
 		<div>
@@ -15,7 +15,7 @@ function CommentInput() {
 			/>
 			<button>Comment</button>
 		</div>
-	)
+	);
 }
 
-export default CommentInput
+export default CommentInput;

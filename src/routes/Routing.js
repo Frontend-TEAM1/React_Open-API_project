@@ -1,7 +1,7 @@
-import DetailPage from 'pages/DetailPage'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Layout from '../components/Layout/Layout'
-import HomePage from '../pages/HomePage'
+import DetailPage from 'pages/DetailPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from '../components/Layout/Layout';
+import HomePage from '../pages/HomePage';
 
 const Routing = () => {
 	return (
@@ -13,6 +13,6 @@ const Routing = () => {
 				</Route>
 			</Routes>
 		</BrowserRouter>
-	)
-}
-export default Routing
+	);
+};
+export default Routing;

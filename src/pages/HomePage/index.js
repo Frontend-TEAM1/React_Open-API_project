@@ -16,7 +16,7 @@ function HomePage() {
 	const page2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 	const navigate = useNavigate();
 	const issues = useSelector(state => state.issues.issues);
-	console.log('홈 인덱스', issues);
+	//console.log('홈 인덱스', issues);
 
 	const getIssues = async () => {
 		const octokit = new Octokit({
@@ -40,7 +40,7 @@ function HomePage() {
 		getIssues();
 	}, [page]);
 
-	console.log('result', result);
+	//console.log('result', result);
 
 	return (
 		<div>

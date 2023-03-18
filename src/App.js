@@ -1,8 +1,8 @@
-import { Provider } from 'react-redux'
-import Routing from 'routes/Routing'
-import { store } from 'store/store'
+import { Provider } from 'react-redux';
+import Routing from 'routes/Routing';
+import { store } from 'store/store';
 
-import GlobalStyles from 'styles/global'
+import GlobalStyles from 'styles/global';
 
 function App() {
 	return (
@@ -12,7 +12,7 @@ function App() {
 				<GlobalStyles />
 			</Provider>
 		</div>
-	)
+	);
 }
 
-export default App
+export default App;

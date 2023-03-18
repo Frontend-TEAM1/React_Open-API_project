@@ -43,11 +43,11 @@ export const issuesSlice = createSlice({
 	},
 	reducers: {
 		getIssue: (state, action) => {
-			console.log('셋 이슈', action.payload);
+			//console.log('셋 이슈', action.payload);
 			state.issues = action.payload;
 		},
 		getPage: (state, action) => {
-			console.log('셋 페이지1', action.payload);
+			//console.log('셋 페이지1', action.payload);
 			state.page = action.payload; // 페이지 상태값 변경
 			console.log('셋 페이지2', state.page);
 		},

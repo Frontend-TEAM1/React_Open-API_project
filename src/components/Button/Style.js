@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 const variantCSS = {
 	primary: css`
@@ -10,7 +10,7 @@ const variantCSS = {
 		background: none;
 		color: ${({ theme }) => theme.palette.primary[300]};
 	`,
-}
+};
 
 const shapeCSS = {
 	default: css`
@@ -19,7 +19,7 @@ const shapeCSS = {
 	round: css`
 		border-radius: 16px;
 	`,
-}
+};
 
 const sizeCSS = {
 	small: css`
@@ -49,7 +49,7 @@ const sizeCSS = {
 		padding: 16px 0;
 		font-size: ${({ theme }) => theme.fontSize.small};
 	`,
-}
+};
 
 export const Button = styled.button`
 	${({ variant }) => variantCSS[variant]}
@@ -63,4 +63,4 @@ export const Button = styled.button`
 	:disabled {
 		opacity: 0.5;
 	}
-`
+`;

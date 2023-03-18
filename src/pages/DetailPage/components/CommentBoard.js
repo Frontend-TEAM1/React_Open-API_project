@@ -5,7 +5,7 @@ function CommentBoard() {
 		<div>
 			<h2>Comments</h2>
 		</div>
-	)
+	);
 }
 
-export default CommentBoard
+export default CommentBoard;

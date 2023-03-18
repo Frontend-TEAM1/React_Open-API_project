@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { flexAlignCenter } from 'styles/common'
+import styled from 'styled-components';
+import { flexAlignCenter } from 'styles/common';
 
 function BasicFooter() {
 	return (
@@ -10,10 +10,10 @@ function BasicFooter() {
 				</div>
 			</S.Container>
 		</>
-	)
+	);
 }
 
-export default BasicFooter
+export default BasicFooter;
 
 const Container = styled.div`
 	background-color: #000000;
@@ -26,8 +26,8 @@ const Container = styled.div`
 		margin: 0;
 		${flexAlignCenter}
 	}
-`
+`;
 
 const S = {
 	Container,
-}
+};

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 function ContentFiltering() {
 	return (
@@ -9,16 +9,16 @@ function ContentFiltering() {
 				<option>생성순</option>
 			</select>
 		</S.Wrapper>
-	)
+	);
 }
 
-export default ContentFiltering
+export default ContentFiltering;
 
 const Wrapper = styled.div`
 	background-color: orange;
 	margin-right: 5px;
-`
+`;
 
 const S = {
 	Wrapper,
-}
+};

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 function ContentListFiltering() {
 	return (
@@ -9,15 +9,15 @@ function ContentListFiltering() {
 				<option>50개씩</option>
 			</select>
 		</S.Wrapper>
-	)
+	);
 }
 
-export default ContentListFiltering
+export default ContentListFiltering;
 
 const Wrapper = styled.div`
 	background-color: orange;
-`
+`;
 
 const S = {
 	Wrapper,
-}
+};

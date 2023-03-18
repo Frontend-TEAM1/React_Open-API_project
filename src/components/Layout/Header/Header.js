@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 function BasicHeader() {
 	return (
@@ -14,10 +14,10 @@ function BasicHeader() {
 				</S.Nav>
 			</S.Container>
 		</>
-	)
+	);
 }
 
-export default BasicHeader
+export default BasicHeader;
 
 const Container = styled.div`
 	background-color: #ffffff;
@@ -39,7 +39,7 @@ const Container = styled.div`
 			margin-bottom: 10px;
 		}
 	}
-`
+`;
 const Nav = styled.div`
 	display: flex;
 	@media (max-width: 600px) {
@@ -53,9 +53,9 @@ const Nav = styled.div`
 			margin-left: 0;
 		}
 	}
-`
+`;
 
 const S = {
 	Container,
 	Nav,
-}
+};

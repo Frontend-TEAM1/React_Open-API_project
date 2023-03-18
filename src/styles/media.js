@@ -1,4 +1,4 @@
-const mediaQurey = maxWidth => `@media (max-width: ${maxWidth}px)`
+const mediaQurey = maxWidth => `@media (max-width: ${maxWidth}px)`;
 
 const size = {
 	mobileS: 375,
@@ -8,7 +8,7 @@ const size = {
 	desktopS: 1280,
 	desktopM: 1440,
 	desktopL: 1920,
-}
+};
 
 export const {
 	mobileS,
@@ -18,7 +18,7 @@ export const {
 	desktopS,
 	desktopM,
 	desktopL,
-} = size
+} = size;
 
 export const media = {
 	mobileS: mediaQurey(mobileS), // @media (max-width: ${mobileS}px)
@@ -29,7 +29,7 @@ export const media = {
 	desktopM: mediaQurey(desktopM),
 	desktopL: mediaQurey(desktopL),
 	custom: maxWidth => mediaQurey(maxWidth),
-}
+};
 
 // const size = {
 // 	mobile: "425px",

@@ -17,7 +17,7 @@ const palette = {
 		200: '#d9d9d9',
 		300: '#656565',
 	},
-}
+};
 
 // 폰트 크기
 const fontSize = {
@@ -26,7 +26,7 @@ const fontSize = {
 	large: '18px',
 	xLarge: '24px',
 	xxLarge: '32px',
-}
+};
 
 // 굵기
 const fontWeight = {
@@ -34,7 +34,7 @@ const fontWeight = {
 	regular: '400',
 	medium: '500',
 	bold: '800',
-}
+};
 
 // 행간
 const lineHeight = {
@@ -42,11 +42,11 @@ const lineHeight = {
 	medium: '20px',
 	large: '24px',
 	xLarge: '28px',
-}
+};
 
 export const theme = {
 	palette,
 	fontSize,
 	fontWeight,
 	lineHeight,
-}
+};
