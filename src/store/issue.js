@@ -71,10 +71,10 @@ export const issueSlice = createSlice({
 	},
 });
 
-const sortingOption = new URLSearchParams(location.search).get('sort');
-const ListingOption = new URLSearchParams(location.search).get('per_page');
-
+console.log('★★getIssues 함수 실행 전');
 export const getIssues = createAsyncThunk('issue/getIssues', async () => {
+	const sortingOption = new URLSearchParams(location.search).get('sort');
+	const ListingOption = new URLSearchParams(location.search).get('per_page');
 	const res = await octokit.request('GET /repos/angular/angular-cli/issues', {
 		owner: 'angular',
 		repo: 'angular-cli',
@@ -86,6 +86,7 @@ export const getIssues = createAsyncThunk('issue/getIssues', async () => {
 	console.log('★★★★★★★★★★★★', sortingOption, ListingOption);
 	return res.data;
 });
+console.log('★★getIssues 함수 실행 후');
 
 export const getDetails = createAsyncThunk('issue/getDetails', async number => {
 	console.log('reducer', number);
