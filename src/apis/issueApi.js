@@ -3,12 +3,8 @@ import { Axios } from './core';
 const PATH = `/repos/angular/angular-cli/issues`;
 
 const IssueApi = {
-	getIssue(issue) {
-		return Axios.get(PATH, {
-			params: {
-				issue_number: issue,
-			},
-		});
+	getIssue(id) {
+		return Axios.get(PATH + `/${id}`);
 	},
 };
 

@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import { flexAlignCenter, flexCenter } from 'styles/common';
 
-function IssueDetail({ issue }) {
+function IssueDetail({ issues }) {
 	return (
 		<S.Wrapper>
-			<S.Title>{issue.title}</S.Title>
+			<S.Title>{issues.title}</S.Title>
 			<S.Info>
-				<div>{issue.state}</div>
-				<div>{issue.created_at}</div>
+				<div>{issues.state}</div>
+				<div>{issues.created_at}</div>
 			</S.Info>
 			<S.Content>
-				<div>{issue.body}</div>
+				<div>{issues.body}</div>
 			</S.Content>
 		</S.Wrapper>
 	);

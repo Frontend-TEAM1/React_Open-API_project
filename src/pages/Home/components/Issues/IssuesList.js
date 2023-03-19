@@ -7,7 +7,7 @@ function IssueList({ issues }) {
 		issues &&
 		issues.map((issue, idx) => (
 			<S.IssueWrap>
-				<S.StyledLink key={idx} to={`/detail/${issue.id}`}>
+				<S.StyledLink key={idx} to={`/detail/${issue.number}`}>
 					<Issue issue={issue} />
 				</S.StyledLink>
 			</S.IssueWrap>
