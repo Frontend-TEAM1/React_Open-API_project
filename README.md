@@ -51,9 +51,9 @@
 
 ## 사용 기술 스택
 
-    FrontEnd : HTML / JavaScript / React
-    라이브러리 : styled-component / styled-reset / husky / eslint / prettier / react-fontawesome / react-redux
-    협업도구 : Git + GitHub
+    > FrontEnd : HTML / JavaScript / React
+    > 라이브러리 : styled-component / styled-reset / husky / eslint / prettier / react-fontawesome / react-redux
+    > 협업도구 : Git + GitHub
 
 ## 요구 사항 구현 내역
 
@@ -81,5 +81,19 @@
 | 각 기능마다 브랜치 + merge            | x        |
 | 구현 후 serverless 환경에서 배포      | x        |
 
+
 ## 코드 및 깃허브 커밋 컨벤션
- - type(옵션) : subject(간단한 커밋내용)
+
+> 깃허브 커밋 컨벤션
+    ㄴtype(옵션) : subject(간단한 커밋내용)
+    
+> 코드
+    ㄴ카멜 표기법
+    ㄴendOfLine: 'lf'
+    ㄴsingleQuote: true
+    ㄴjsxSingleQuote: false
+    ㄴtabWidth: 2
+    ㄴuseTabs: true
+    ㄴtrailingComma: 'all'
+    ㄴarrowParens: 'avoid'
+    
