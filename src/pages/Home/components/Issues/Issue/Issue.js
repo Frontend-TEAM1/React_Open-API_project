@@ -29,7 +29,7 @@ const IssueWrapper = styled.div`
 	margin: calc(${({ theme }) => theme.margin.xxLarge}*5) auto;
 	${flexCenter}
 	flex-direction: column;
-	background-color: azure;
+	/* background-color: azure; */
 `;
 
 const IssueHeader = styled.div`

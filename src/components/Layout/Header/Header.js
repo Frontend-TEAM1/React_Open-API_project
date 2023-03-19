@@ -1,20 +1,61 @@
 import styled from 'styled-components';
-import { flexCenter } from 'styles/common';
 
 function BasicHeader() {
-	return <S.Header>GIT ISSUES</S.Header>;
+	return (
+		<>
+			<S.Container>
+				<h1>GitHub</h1>
+				<S.Nav>
+					<a>Hyunseo Koo</a>
+					<a>Nasil Kim</a>
+					<a>Jaehoon Lee</a>
+					<a>Juram Lee</a>
+					<a>Youngseung Jang</a>
+				</S.Nav>
+			</S.Container>
+		</>
+	);
 }
 
 export default BasicHeader;
 
-const Header = styled.h2`
-	background-color: ${({ theme }) => theme.palette.black};
-	color: ${({ theme }) => theme.palette.white};
-	${flexCenter};
-	padding: ${({ theme }) => theme.margin.xxLarge};
-	font-size: ${({ theme }) => theme.fontSize.xLarge};
+const Container = styled.div`
+	background-color: #ffffff;
+	color: #000000;
+	font-weight: bolder;
+	padding: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	@media (max-width: 600px) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	& > h1 {
+		font-size: 30px;
+		@media (max-width: 600px) {
+			font-size: 30px;
+			margin-bottom: 10px;
+		}
+	}
+`;
+const Nav = styled.div`
+	display: flex;
+	@media (max-width: 600px) {
+		margin-top: 10px;
+	}
+	& > a {
+		color: darkblue;
+		text-decoration: none;
+		margin-left: 20px;
+		@media (max-width: 600px) {
+			margin-left: 0;
+		}
+	}
 `;
 
 const S = {
-	Header,
+	Container,
+	Nav,
 };
