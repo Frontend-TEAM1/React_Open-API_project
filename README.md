@@ -5,6 +5,7 @@
 ## 배포 주소 or 시연 영상
 
     시연영상으로 대체하였습니다.
+    https://drive.google.com/drive/folders/1bV8mKC2J8hNNfjczIoDPEJtIWZ7HalTh?usp=sharing
 
 ## 프로젝트 폴더 구조
 
