@@ -52,7 +52,7 @@
 ## 사용 기술 스택
 
     FrontEnd : HTML / JavaScript / React
-    라이브러리 : styled-component / husky / eslint / prettier 
+    라이브러리 : styled-component / styled-reset / husky / eslint / prettier / react-fontawesome / react-redux
     협업도구 : Git + GitHub
 
 ## 요구 사항 구현 내역
