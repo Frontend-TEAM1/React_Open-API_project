@@ -30,7 +30,7 @@
             ㄴindex.js : rootReducer 설정
             ㄴissues.js : createSlice(redux-toolkit) 설정
             
-        ㄴroutes : 루트 설정
+        ㄴroutes
             ㄴrouting.js : 라우팅 설정
             
         ㄴstore 
@@ -57,7 +57,6 @@
 
 ## 요구 사항 구현 내역
 
-    가. 목록페이지
 
 | 요구사항                              | 구현여부 |
 | ------------------------------------- | -------- |
