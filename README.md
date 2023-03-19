@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+## 프로젝트 설명
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    깃허브 오픈 API를 활용하여 angular 내 angular-cli 레퍼지토리의 이슈를 조회할 수 있는 반응형 웹 사이트를 제작했습니다.
 
-## Available Scripts
+## 배포 주소 or 시연 영상
 
-In the project directory, you can run:
+    시연영상으로 대체하였습니다.
 
-### `npm start`
+## 프로젝트 폴더 구조
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    * src
+        ㄴapis
+            ㄴcore.js
+            ㄴlistApi.js
+            
+        ㄴcomponents
+            ㄴLayout : 공통 Header + Footer 설정
+            ㄴLoading : 공통 Loading 설정
+            
+        ㄴpages
+            ㄴHome : 게이트 페이지
+                ㄴComponents
+                    ㄴissues
+                    ㄴpagination
+                    ㄴsortIssues
+            ㄴGoToIssue : 이슈리스트를 불러오는 페이지
+            ㄴDetailPage : 각 이슈별 상세페이지
+            
+        ㄴreducer
+            ㄴindex.js : rootReducer 설정
+            ㄴissues.js : createSlice(redux-toolkit) 설정
+            
+        ㄴroutes : 루트 설정
+            ㄴrouting.js : 라우팅 설정
+            
+        ㄴstore 
+            ㄴstore.js : configureStore 설정
+        
+        ㄴstyles : 공통 스타일 설정
+        -------------------------------------------
+        * App.js
+        * index.js
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 팀원
 
-### `npm test`
+    구현서 (팀장)
+    김나실
+    이재훈
+    이주람
+    장영승
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 사용 기술 스택
 
-### `npm run build`
+    FrontEnd : HTML / JavaScript / React
+    라이브러리 : styled-component / husky / eslint / prettier 
+    협업도구 : Git + GitHub
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 요구 사항 구현 내역
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    가. 목록페이지
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| 요구사항                              | 구현여부 |
+| ------------------------------------- | -------- |
+| 1. 목록페이지                         | 구현여부 |
+| 이슈데이터 마운트                     | O        |
+| 목록은 10개 단위의 페이지네이션       | O        |
+| 총 이슈의 갯수는 최근 200개           | O        |
+| 현재 페이지의 숫자 포커스             | O        |
+| 10페이지 단위                         | O        |
+| 페이지네이션 구성방식                 | O        |
+| 필터기능                              | O        |
+| (페이지네이션+필터)뒤로가기 기능      | O        |
+| Redux ToolKit 활용하여 전역 상태 관리 | O        |
+| 데이터 받아오는 동안 로딩페이지       | O        |
+| ---                                   | ---      |
+| 2. 상세페이지                         | 구현여부 |
+| id 값을 활용하여 api를 요청           | O        |
+| 해당 issue의 상세페이지를 구현        | O        |
+| 반응형으로 구성                       | O        |
+| ---                                   | ---      |
+| 3. 공통                               | 구현여부 |
+| 각 기능마다 브랜치 + merge            | x        |
+| 구현 후 serverless 환경에서 배포      | x        |
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 코드 및 깃허브 커밋 컨벤션
+ - type(옵션) : subject(간단한 커밋내용)
