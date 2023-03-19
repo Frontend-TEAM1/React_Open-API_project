@@ -84,10 +84,10 @@
 
 ## 코드 및 깃허브 커밋 컨벤션
 
-> 깃허브 커밋 컨벤션
+- 깃허브 커밋 컨벤션
     ㄴtype(옵션) : subject(간단한 커밋내용)
     
-> 코드
+- 코드
     ㄴ카멜 표기법
     ㄴendOfLine: 'lf'
     ㄴsingleQuote: true
